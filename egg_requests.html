@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Egg Requests List</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f7f7f7;
+    padding: 20px;
+    line-height: 1.6;
+  }
+  .request-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-radius: 10px;
+  }
+  .request-header {
+    background: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 10px 10px 0 0;
+    margin: -20px -20px 20px;
+    text-align: center;
+  }
+  .request-item {
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+  }
+  .request-item:last-child {
+    border-bottom: none;
+  }
+  .request-label {
+    font-weight: bold;
+  }
+  .request-text {
+    margin-left: 5px;
+  }
+</style>
+</head>
+<body>
+
+<div class="request-container">
+  <div class="request-header">
+    <h2>Egg Requests</h2>
+  </div>
+
+  <!-- Die Anfragen werden hier eingefügt -->
+  <div id="requests-list"></div>
+</div>
+
+<script>
+var requests = [];
+
+function displayRequests() {
+  var listElement = document.getElementById('requests-list');
+  listElement.innerHTML = '';
+
+  requests.forEach(function(request) {
+    var requestDiv = document.createElement('div');
+    requestDiv.classList.add('request-item');
+    requestDiv.innerHTML = `
+      <div><span class="request-label">Name:</span><span class="request-text">${request.name}</span></div>
+      <div><span class="request-label">Discord Name:</span><span class="request-text">${request.discordName}</span></div>
+      <div><span class="request-label">Time Zone:</span><span class="request-text">${request.timezone}</span></div>
+      <div><span class="request-label">Dinosaur:</span><span class="request-text">${request.dinosaur}</span></div>
+      <div><span class="request-label">Amount:</span><span class="request-text">${request.amount}</span></div>
+    `;
+    listElement.appendChild(requestDiv);
+  });
+}
+
+displayRequests();
+</script>
+
+</body>
+</html>
+
